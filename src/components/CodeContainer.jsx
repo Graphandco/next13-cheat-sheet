@@ -1,19 +1,46 @@
 "use client";
 import React, { useContext } from "react";
+import { useSession } from "next-auth/react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { far } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { routeros } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { FaRegCopy } from "react-icons/fa";
+import { FaRegCopy, FaUserCircle } from "react-icons/fa";
 import { BsShare } from "react-icons/bs";
 import { ThemeContext } from "@/context/ThemeContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const CodeContainer = ({ tip }) => {
-    const { content, name } = tip;
+    const { content, name, category, username } = tip;
     const { mode } = useContext(ThemeContext);
+    const session = useSession();
 
-    const theme = mode === "dark" ? dracula : routeros;
+    const theme = mode === "dark" ? far : routeros;
+
+    const normalizeText = (text) => {
+        return text
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+    };
+    let language;
+    switch (normalizeText(category)) {
+        case "css":
+            language = "css";
+            break;
+        case "php":
+            language = "php";
+            break;
+        case "javascript":
+            language = "javascript";
+            break;
+        case "prestashop":
+            language = "php";
+            break;
+
+        default:
+            language = "css";
+    }
 
     const notify = (message) =>
         toast.success(message, {
@@ -36,8 +63,12 @@ const CodeContainer = ({ tip }) => {
         notify("Lien du code copié !");
     };
 
+    // if (session.status == "unauthenticated") {
+    //     router?.push("/dashboard/login");
+    // }
+
     return (
-        <>
+        <div className="grid gap-6 pl-52">
             <ToastContainer
                 position="bottom-right"
                 autoClose={1500}
@@ -51,6 +82,8 @@ const CodeContainer = ({ tip }) => {
             />
             <div className="flex flex-col">
                 <div className="border border-contrast10 rounded-2xl">
+                    {/* {session.status === "loading" && <span className="loading loading-dots loading-lg"></span>} */}
+
                     <div className="bg-contrast5 rounded-t-2xl flex items-center justify-between py-3 px-5">
                         <div className="text-lg text-primary font-semibold tracking-wide">{name}</div>
                         <div className="flex align-center gap-3 text-contrast text-lg ">
@@ -59,13 +92,17 @@ const CodeContainer = ({ tip }) => {
                         </div>
                     </div>
                     <div className="p-3 opacity-70">
-                        <SyntaxHighlighter language="css" style={theme}>
+                        <SyntaxHighlighter language={language} style={theme}>
                             {content}
                         </SyntaxHighlighter>
                     </div>
+                    <div className="flex justify-end gap-1 items-center pb-2 px-5 text-sm">
+                        <FaUserCircle />
+                        <div className="italic">{username}</div>
+                    </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

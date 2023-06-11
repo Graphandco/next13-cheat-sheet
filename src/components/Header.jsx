@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import DarkModeToggle from "./DarkModeToggle/DarkModeToggle";
 import { signOut, useSession } from "next-auth/react";
+import { FaPlusCircle, FaHome, FaUserCircle } from "react-icons/fa";
+import SearchTip from "./SearchTip";
 
 const links = [
     {
@@ -45,7 +47,6 @@ const links = [
 
 const Header = () => {
     const session = useSession();
-
     return (
         <header className="main-header fixed left-0 right-0 top-0 isolate z-10">
             <div className="container flex justify-between items-center py-5">
@@ -53,17 +54,24 @@ const Header = () => {
                     Cheat Sheets
                 </Link>
                 <div className="flex items-center gap-5">
+                    <SearchTip />
                     <DarkModeToggle />
-                    {links.map((link) => (
+                    <Link href="/" className="text-white hover:text-primary transition-all text-2xl">
+                        <FaHome />
+                    </Link>
+                    <Link href="/dashboard" className="text-white hover:text-primary transition-all text-2xl">
+                        <FaUserCircle />
+                    </Link>
+                    {/* {links.map((link) => (
                         <Link key={link.id} href={link.url} className="hover:text-primary transition-all">
                             {link.title}
                         </Link>
-                    ))}
-                    {/* {session.status === "authenticated" && (
-                        <button  onClick={signOut}>
-                            Logout
-                        </button>
-                    )} */}
+                    ))} */}
+                    {session.status === "authenticated" && (
+                        <Link href="/add-tip">
+                            <FaPlusCircle className="text-2xl text-white hover:text-primary transition-all " />
+                        </Link>
+                    )}
                 </div>
             </div>
         </header>

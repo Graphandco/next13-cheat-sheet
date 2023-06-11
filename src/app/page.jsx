@@ -1,4 +1,5 @@
 import CodeContainer from "@/components/CodeContainer";
+import HomeTips from "@/components/homepage/HomeTips";
 
 async function getData() {
     const res = await fetch("http://localhost:3000/api/tips", {
@@ -15,13 +16,7 @@ async function getData() {
 const Home = async () => {
     const tips = await getData();
 
-    return (
-        <div className="flex flex-col gap-10 pt-20">
-            {tips.map((tip) => (
-                <CodeContainer key={tip.id} tip={tip} />
-            ))}
-        </div>
-    );
+    return <HomeTips tips={tips} />;
 };
 
 export default Home;

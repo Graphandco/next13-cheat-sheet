@@ -5,6 +5,7 @@ import Footer from "@/components/footer/Footer";
 import { ThemeProvider } from "@/context/ThemeContext";
 import AuthProvider from "@/components/AuthProvider/AuthProvider";
 import Header from "@/components/Header";
+import { SearchTextProvider } from "@/context/SearchText";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +20,13 @@ export default function RootLayout({ children }) {
             <body>
                 <ThemeProvider>
                     <AuthProvider>
-                        <div className="container">
-                            <Header />
-                            {children}
-                            <Footer />
-                        </div>
+                        <SearchTextProvider>
+                            <div className="container">
+                                <Header />
+                                {children}
+                                <Footer />
+                            </div>
+                        </SearchTextProvider>
                     </AuthProvider>
                 </ThemeProvider>
             </body>

@@ -77,6 +77,9 @@ a {
 
 pre {
     background: transparent !important;
+    code {
+        white-space: break-spaces !important;
+    }
 }
 
 .Toastify__toast {
@@ -87,5 +90,30 @@ pre {
     }
     button svg {
         fill: var(--bg-color) !important;
+    }
+}
+
+.search-input {
+    background-color: transparent;
+    border: none !important;
+    outline: none !important;
+    border-bottom: 1px solid var(--primary) !important;
+    padding: 0 10px 3px 0;
+    &::placeholder {
+        color: var(--contrast);
+        opacity: 0.4;
+    }
+}
+.cat-collapse {
+    input:hover {
+        & ~ .collapse-title {
+            color: var(--primary);
+            svg {
+                opacity: 1;
+            }
+        }
+    }
+    input:checked ~ .collapse-title svg {
+        rotate: 90deg;
     }
 }

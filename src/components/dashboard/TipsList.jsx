@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaPen } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -32,7 +32,7 @@ const TipsList = ({ isLoading, tips, mutate }) => {
         });
 
     return (
-        <>
+        <div>
             <ToastContainer
                 position="bottom-right"
                 autoClose={1500}
@@ -44,8 +44,8 @@ const TipsList = ({ isLoading, tips, mutate }) => {
                 draggable={false}
                 pauseOnHover={false}
             />
-            <div className="py-5">
-                <div className="font-title text-contrast text-2xl mb-3">Mes Tips</div>
+            <div className="border border-contrast10 py-5 px-8 rounded-lg">
+                <div className="font-title text-primary text-xl mb-3">Mes Tips</div>
                 {isLoading ? (
                     <span className="loading loading-dots loading-lg"></span>
                 ) : (
@@ -58,16 +58,20 @@ const TipsList = ({ isLoading, tips, mutate }) => {
                                 <h2 className="hover:text-contrast">{tip.name}</h2>
                             </Link>
                             <div className="flex gap-2 items-center">
-                                <FaTrash
-                                    className="text-contrast transition-all cursor-pointer hover:text-red-500"
-                                    onClick={() => handleDelete(tip._id, tip.name)}
-                                />
+                                <button className="btn btn-primary btn-sm" onClick={() => handleDelete(tip._id, tip.name)}>
+                                    <FaPen />
+                                    <div className="uppercase">Éditer</div>
+                                </button>
+                                <button className="btn btn-primary btn-sm btn-outline" onClick={() => handleDelete(tip._id, tip.name)}>
+                                    <FaTrash />
+                                    <div className="uppercase">Supprimer</div>
+                                </button>
                             </div>
                         </div>
                     ))
                 )}
             </div>
-        </>
+        </div>
     );
 };
 

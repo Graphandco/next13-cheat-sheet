@@ -54,60 +54,15 @@ const Dashboard = () => {
         router?.push("/dashboard/login");
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const name = e.target[0].value;
-        const category = e.target[1].value;
-        const content = e.target[2].value;
-        const tags = e.target[3].value;
-
-        try {
-            await fetch("/api/tips", {
-                method: "POST",
-                body: JSON.stringify({
-                    name,
-                    category,
-                    content,
-                    tags,
-                    username: session.data.user.name,
-                }),
-            });
-            mutate();
-            e.target.reset();
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
     if (session.status === "authenticated") {
         return (
-            <div className="py-20">
+            <div className="py-32">
                 {/* <button className="btn btn-active btn-primary">Primary</button>
                 <CldUploadButton /> */}
-                <UserInfos user={session.data.user} />
-                <div className="grid grid-cols-2 gap-20">
-                    <div className={styles.posts}>
-                        <TipsList isLoading={isLoading} tips={data} mutate={mutate} />
-                    </div>
-
-                    <form className="grid gap-5" onSubmit={handleSubmit}>
-                        <div className="title-xl">Ajouter un nouveau Tip</div>
-                        <input type="text" placeholder="Nom du tip" className="input bg-contrast" />
-                        {/* <input type="text" placeholder="Catégorie" className="input bg-contrast" /> */}
-                        <select className="select bg-contrast">
-                            <option disabled selected>
-                                Catégorie
-                            </option>
-                            <option>Javascript</option>
-                            <option>PHP</option>
-                            <option>CSS</option>
-                            <option>Prestashop</option>
-                            <option>Meosis</option>
-                        </select>
-                        <textarea placeholder="Contenu du tip" className="textarea bg-contrast" cols="20" rows="8"></textarea>
-                        <input type="text" placeholder="Tags" className="input bg-contrast" />
-                        <button className="btn btn-primary">Ajouter</button>
-                    </form>
+                <div className="title-xl mb-2">Tableau de bord</div>
+                <div className="grid grid-cols-[2fr_1fr] gap-6 py-5">
+                    <TipsList isLoading={isLoading} tips={data} mutate={mutate} />
+                    <UserInfos user={session.data.user} />
                 </div>
             </div>
         );
