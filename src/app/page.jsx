@@ -2,7 +2,7 @@ import CodeContainer from "@/components/CodeContainer";
 import HomeTips from "@/components/homepage/HomeTips";
 
 async function getData() {
-    const res = await fetch("/api/tips", {
+    const res = await fetch("https://next13-cheat-sheet.vercel.app/api/tips", {
         cache: "no-store",
     });
 
