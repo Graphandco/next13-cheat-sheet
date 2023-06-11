@@ -2,7 +2,7 @@ import CodeContainer from "@/components/CodeContainer";
 import HomeTips from "@/components/homepage/HomeTips";
 
 async function getData() {
-    const res = await fetch("http://localhost:3000/api/tips", {
+    const res = await fetch("/api/tips", {
         cache: "no-store",
     });
 
