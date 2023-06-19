@@ -56,10 +56,10 @@ const Header = () => {
                 <div className="flex items-center gap-5">
                     <SearchTip />
                     <DarkModeToggle />
-                    <Link href="/" className="text-white hover:text-primary transition-all text-2xl">
+                    <Link href="/" className="text-contrast hover:text-primary transition-all text-2xl">
                         <FaHome />
                     </Link>
-                    <Link href="/dashboard" className="text-white hover:text-primary transition-all text-2xl">
+                    <Link href="/dashboard" className="text-contrast hover:text-primary transition-all text-2xl">
                         <FaUserCircle />
                     </Link>
                     {/* {links.map((link) => (
@@ -69,7 +69,7 @@ const Header = () => {
                     ))} */}
                     {session.status === "authenticated" && (
                         <Link href="/add-tip">
-                            <FaPlusCircle className="text-2xl text-white hover:text-primary transition-all " />
+                            <FaPlusCircle className="text-2xl text-contrast hover:text-primary transition-all " />
                         </Link>
                     )}
                 </div>
