@@ -45,7 +45,7 @@ const Login = ({ url }) => {
                 <input type="text" placeholder="Email" required className="input bg-contrast w-72" />
                 <input type="password" placeholder="Mot de passe" required className="input bg-contrast w-72" />
                 <button className="btn btn-primary">S'identifier</button>
-                {error && error}
+                {error && <div>Erreur : {error}</div>}
             </form>
             {/* <button
                 onClick={() => {

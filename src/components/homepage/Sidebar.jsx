@@ -25,7 +25,7 @@ const Sidebar = ({ tips }) => {
                             <div className="collapse-title flex items-center gap-1 text-white hover:text-primary transition-all min-h-0 p-0 font-medium capitalize">
                                 {cat} <FaChevronRight className="text-xs translate-y-[2px] opacity-40" />
                             </div>
-                            <div className="collapse-content border-l border-contrast10 grid gap-2 pl-0 text-sm capitalize">
+                            <div className="collapse-content pb-0 py-1  border-l border-contrast10 grid gap-2 pl-0 text-sm capitalize">
                                 {tips
                                     .filter(function (tip) {
                                         return tip.category === cat;
