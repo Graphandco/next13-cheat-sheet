@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import CodeContainer from "@/components/CodeContainer";
 
 async function getData(id) {
-    const res = await fetch(`https://next13-cheat-sheet.vercel.app/api/tips/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/tips/${id}`, {
         cache: "no-store",
     });
 

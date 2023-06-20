@@ -61,7 +61,7 @@ const CodeContainer = ({ tip }) => {
         notify("Code copié !");
     };
     const shareCode = () => {
-        // navigator.clipboard.writeText(content);
+        navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_SITE_URL}/tips/${tip._id}`);
         notify("Lien du code copié !");
     };
 
