@@ -30,6 +30,7 @@ module.exports = {
                 contrast: "var(--contrast)",
                 contrast5: "var(--contrast-5)",
                 contrast10: "var(--contrast-10)",
+                bg: "var(--bg-color)",
                 transparent: "transparent",
                 current: "currentColor",
                 white: "#ffffff",

@@ -105,6 +105,10 @@ pre {
     }
 }
 .cat-collapse {
+    .collapse-content {
+        padding: 0 !important;
+        margin-block: 0.25rem;
+    }
     input:hover {
         & ~ .collapse-title {
             color: var(--primary);

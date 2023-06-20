@@ -20,9 +20,9 @@ const Sidebar = ({ tips }) => {
             <div className="">
                 {catList.map((cat, index) => {
                     return (
-                        <div className="cat-collapse collapse rounded-none gap-2" key={index}>
+                        <div className="cat-collapse collapse rounded-none gap-1" key={index}>
                             <input type="checkbox" className="min-h-0" />
-                            <div className="collapse-title flex items-center gap-1 text-white hover:text-primary transition-all min-h-0 p-0 font-medium capitalize">
+                            <div className="collapse-title flex items-center gap-1 text-contrast hover:text-primary transition-all min-h-0 p-0 font-medium capitalize">
                                 {cat} <FaChevronRight className="text-xs translate-y-[2px] opacity-40" />
                             </div>
                             <div className="collapse-content pb-0 py-1  border-l border-contrast10 grid gap-2 pl-0 text-sm capitalize">
@@ -34,7 +34,7 @@ const Sidebar = ({ tips }) => {
                                         <p
                                             key={index}
                                             onClick={() => setSearchText(normalizeText(tip.name))}
-                                            className="font-medium border-l border-contrast10 pl-4 hover:border-white hover:text-primary cursor-pointer transition-all "
+                                            className="font-medium border-l border-transparent pl-4 hover:border-white hover:text-primary cursor-pointer transition-all "
                                         >
                                             {tip.name}
                                         </p>

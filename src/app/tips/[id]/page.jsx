@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import CodeContainer from "@/components/CodeContainer";
 
 async function getData(id) {
-    const res = await fetch(`http://localhost:3000/api/tips/${id}`, {
+    const res = await fetch(`https://next13-cheat-sheet.vercel.app/api/tips/${id}`, {
         cache: "no-store",
     });
 
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
 const BlogPost = async ({ params }) => {
     const tip = await getData(params.id);
     return (
-        <>
+        <div className="pt-32">
             <CodeContainer tip={tip} />
             {/* <div className={styles.container}>
                 <div className={styles.top}>
@@ -47,7 +47,7 @@ const BlogPost = async ({ params }) => {
                     <p className={styles.text}>{data.content}</p>
                 </div>
             </div> */}
-        </>
+        </div>
     );
 };
 

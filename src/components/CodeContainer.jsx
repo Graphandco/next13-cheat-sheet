@@ -15,6 +15,8 @@ const CodeContainer = ({ tip }) => {
     const { mode } = useContext(ThemeContext);
     const session = useSession();
 
+    const tags = tip.tags.split(",");
+
     const theme = mode === "dark" ? far : routeros;
 
     const normalizeText = (text) => {
@@ -68,7 +70,7 @@ const CodeContainer = ({ tip }) => {
     // }
 
     return (
-        <div className="grid gap-6 pl-52">
+        <div className="grid gap-6">
             <ToastContainer
                 position="bottom-right"
                 autoClose={1500}
@@ -81,7 +83,7 @@ const CodeContainer = ({ tip }) => {
                 pauseOnHover={false}
             />
             <div className="flex flex-col">
-                <div className="border border-contrast10 rounded-2xl">
+                <div className="border border-contrast10 rounded-2xl pb-2">
                     {/* {session.status === "loading" && <span className="loading loading-dots loading-lg"></span>} */}
 
                     <div className="bg-contrast5 rounded-t-2xl flex items-center justify-between py-3 px-5">
@@ -96,9 +98,18 @@ const CodeContainer = ({ tip }) => {
                             {content}
                         </SyntaxHighlighter>
                     </div>
-                    <div className="flex justify-end gap-1 items-center pb-2 px-5 text-sm">
-                        <FaUserCircle />
-                        <div className="italic">{username}</div>
+                    <div className="flex justify-between gap-1 items-center pb-2 px-5 text-sm">
+                        <div className="flex gap-2">
+                            {tags.map((tag, index) => (
+                                <div key={index} className="badge badge-outline">
+                                    {tag}
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex gap-1 items-center text-sm">
+                            <FaUserCircle />
+                            <div className="italic">{username}</div>
+                        </div>
                     </div>
                 </div>
             </div>

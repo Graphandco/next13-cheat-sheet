@@ -23,7 +23,10 @@ const HomeTips = ({ tips }) => {
     return (
         <div className="grid py-24">
             <Sidebar tips={tips} />
-            <div className="">
+            <div className=" pl-52">
+                <div className="flex justify-end italic text-contrast mr-1">
+                    {filteredTips.length} tip{filteredTips.length > 1 && "s"}
+                </div>
                 {filteredTips.map((tip) => (
                     <CodeContainer key={tip.id} tip={tip} />
                 ))}
