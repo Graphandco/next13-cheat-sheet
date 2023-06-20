@@ -3,6 +3,8 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import CodeContainer from "@/components/CodeContainer";
+import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa";
 
 async function getData(id) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/tips/${id}`, {
@@ -28,6 +30,12 @@ const BlogPost = async ({ params }) => {
     const tip = await getData(params.id);
     return (
         <div className="pt-32">
+            <Link href="/">
+                <button className="btn btn-primary btn-sm btn-outline">
+                    <FaArrowLeft />
+                    <div className="uppercase">Retour à la liste</div>
+                </button>
+            </Link>
             <CodeContainer tip={tip} />
             {/* <div className={styles.container}>
                 <div className={styles.top}>

@@ -17,7 +17,7 @@ const HomeTips = ({ tips }) => {
     const filteredTips = tips.filter((tip) => {
         normalizeText(searchText);
         const normalizedTipName = normalizeText(tip.name);
-        return normalizedTipName.includes(searchText) ? tip : "";
+        return normalizedTipName.includes(searchText) || tip.tags.includes(searchText) ? tip : "";
     });
 
     return (
