@@ -5,7 +5,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const TipsList = ({ isLoading, tips, mutate }) => {
-    tips?.reverse();
     const handleDelete = async (id, name) => {
         if (window.confirm(`Voulez-vous vraiment supprimer le tip ${name} ?`)) {
             try {
@@ -53,7 +52,7 @@ const TipsList = ({ isLoading, tips, mutate }) => {
                 {isLoading ? (
                     <span className="loading loading-dots loading-lg ml-8"></span>
                 ) : (
-                    <div className="grid grid-cols-1">
+                    <div className="flex flex-col-reverse">
                         {tips?.map((tip) => (
                             <div className="flex justify-between px-8 even:bg-white/5 hover:bg-white/10" key={tip._id}>
                                 {/* <div className={styles.imgContainer}>

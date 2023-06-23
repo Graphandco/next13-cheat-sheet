@@ -1,13 +1,8 @@
-"use client";
-
-import { useState } from "react";
 import ContributionsGroup from "./ContributionsGroup";
 
 const Contributions = ({ tips }) => {
     let allUsers = tips?.map((item) => item.username);
     const users = [...new Set(allUsers)].sort();
-
-    const [tipsCount, setTipsCount] = useState("");
 
     return (
         <div>

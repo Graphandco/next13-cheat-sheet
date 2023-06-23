@@ -6,7 +6,6 @@ import Sidebar from "./Sidebar";
 
 const HomeTips = ({ tips }) => {
     const { searchText } = useContext(SearchTextContext);
-    tips.reverse();
 
     const normalizeText = (text) => {
         return text
@@ -28,9 +27,11 @@ const HomeTips = ({ tips }) => {
                 <div className="hidden md:flex justify-end italic text-contrast mr-1">
                     {filteredTips.length} tip{filteredTips.length > 1 && "s"}
                 </div>
-                {filteredTips.map((tip) => (
-                    <CodeContainer key={tip.id} tip={tip} />
-                ))}
+                <div className="flex flex-col-reverse">
+                    {filteredTips.map((tip) => (
+                        <CodeContainer key={tip.id} tip={tip} />
+                    ))}
+                </div>
             </div>
         </div>
     );
