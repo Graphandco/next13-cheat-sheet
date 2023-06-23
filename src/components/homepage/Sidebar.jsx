@@ -16,7 +16,7 @@ const Sidebar = ({ tips }) => {
     };
 
     return (
-        <div className="fixed w-48 mt-12">
+        <div className="hidden md:block fixed w-48 mt-12">
             {catList.map((cat, index) => {
                 return (
                     <div className="cat-collapse collapse rounded-none gap-1" key={index}>

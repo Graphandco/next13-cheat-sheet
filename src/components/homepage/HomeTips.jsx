@@ -6,6 +6,7 @@ import Sidebar from "./Sidebar";
 
 const HomeTips = ({ tips }) => {
     const { searchText } = useContext(SearchTextContext);
+    tips.reverse();
 
     const normalizeText = (text) => {
         return text
@@ -23,8 +24,8 @@ const HomeTips = ({ tips }) => {
     return (
         <div className="grid py-24">
             <Sidebar tips={tips} />
-            <div className=" pl-52">
-                <div className="flex justify-end italic text-contrast mr-1">
+            <div className="pl-0 md:pl-52">
+                <div className="hidden md:flex justify-end italic text-contrast mr-1">
                     {filteredTips.length} tip{filteredTips.length > 1 && "s"}
                 </div>
                 {filteredTips.map((tip) => (

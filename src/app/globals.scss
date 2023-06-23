@@ -98,10 +98,12 @@ pre {
     border: none !important;
     outline: none !important;
     border-bottom: 1px solid var(--primary) !important;
-    padding: 0 10px 3px 0;
+    padding: 0 10px 4px 0;
     &::placeholder {
         color: var(--contrast);
         opacity: 0.4;
+        font-style: italic;
+        font-weight: 400;
     }
 }
 .cat-collapse {

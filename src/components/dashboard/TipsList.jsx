@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const TipsList = ({ isLoading, tips, mutate }) => {
+    tips?.reverse();
     const handleDelete = async (id, name) => {
         if (window.confirm(`Voulez-vous vraiment supprimer le tip ${name} ?`)) {
             try {
@@ -44,31 +45,36 @@ const TipsList = ({ isLoading, tips, mutate }) => {
                 draggable={false}
                 pauseOnHover={false}
             />
-            <div className="border border-contrast10 py-5 px-8 rounded-lg">
-                <div className="font-title text-primary text-xl mb-3">Mes Tips</div>
+            <div className="border border-contrast10 pt-5 rounded-lg">
+                <div className="flex gap-2 items-center mb-5 px-8">
+                    <div className="font-title text-primary text-xl ">Mes Tips</div>
+                    <div className="text-md italic">({tips?.length})</div>
+                </div>
                 {isLoading ? (
-                    <span className="loading loading-dots loading-lg"></span>
+                    <span className="loading loading-dots loading-lg ml-8"></span>
                 ) : (
-                    tips?.map((tip) => (
-                        <div className="flex justify-between my-2" key={tip._id}>
-                            {/* <div className={styles.imgContainer}>
+                    <div className="grid grid-cols-1">
+                        {tips?.map((tip) => (
+                            <div className="flex justify-between px-8 even:bg-white/5 hover:bg-white/10" key={tip._id}>
+                                {/* <div className={styles.imgContainer}>
                                       <Image src={tip.img} alt="" width={200} height={100} />
                                   </div> */}
-                            <Link href={`/tips/${tip._id}`}>
-                                <h2 className="hover:text-contrast">{tip.name}</h2>
-                            </Link>
-                            <div className="flex gap-2 items-center">
-                                <button className="btn btn-primary btn-sm" onClick={() => handleDelete(tip._id, tip.name)}>
+                                <Link href={`/tips/${tip._id}`} className="grow">
+                                    <div className="py-4 hover:text-contrast">{tip.name}</div>
+                                </Link>
+                                <div className="flex gap-2 items-center">
+                                    {/* <button className="btn btn-primary btn-sm" onClick={() => handleDelete(tip._id, tip.name)}>
                                     <FaPen />
                                     <div className="uppercase">Éditer</div>
-                                </button>
-                                <button className="btn btn-primary btn-sm btn-outline" onClick={() => handleDelete(tip._id, tip.name)}>
-                                    <FaTrash />
-                                    <div className="uppercase">Supprimer</div>
-                                </button>
+                                </button> */}
+                                    <button className="btn btn-primary btn-xs btn-outline" onClick={() => handleDelete(tip._id, tip.name)}>
+                                        <FaTrash />
+                                        <div className="uppercase">Supprimer</div>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    ))
+                        ))}
+                    </div>
                 )}
             </div>
         </div>

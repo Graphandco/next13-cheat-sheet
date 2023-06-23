@@ -49,7 +49,7 @@ const Header = () => {
     const session = useSession();
     return (
         <header className="main-header fixed left-0 right-0 top-0 isolate z-10">
-            <div className="container flex justify-between items-center py-5">
+            <div className="container flex flex-col md:flex-row gap-2 md:gap-0 justify-between items-center py-5">
                 <Link href="/" className="text-contrast font-bold text-xl uppercase">
                     Cheat Sheets
                 </Link>

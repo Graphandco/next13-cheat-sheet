@@ -8,6 +8,7 @@ import Image from "next/image";
 import { CldUploadButton } from "next-cloudinary";
 import UserInfos from "@/components/dashboard/UserInfos";
 import TipsList from "@/components/dashboard/TipsList";
+import Contributions from "@/components/dashboard/Contributions";
 
 const Dashboard = () => {
     //OLD WAY TO FETCH DATA
@@ -43,11 +44,12 @@ const Dashboard = () => {
     const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
     const { data, mutate, error, isLoading } = useSWR(`/api/tips?username=${session?.data?.user.name}`, fetcher);
+    const { data: allData } = useSWR(`/api/tips`, fetcher);
 
     // console.log(session.data.user);
 
     if (session.status === "loading") {
-        return <p>Loading...</p>;
+        return <span className="loading loading-dots loading-lg ml-8"></span>;
     }
 
     if (session.status === "unauthenticated") {
@@ -63,6 +65,9 @@ const Dashboard = () => {
                 <div className="grid grid-cols-[2fr_1fr] gap-6 py-5">
                     <TipsList isLoading={isLoading} tips={data} mutate={mutate} />
                     <UserInfos user={session.data.user} />
+                </div>
+                <div className="grid">
+                    <Contributions tips={allData} />
                 </div>
             </div>
         );

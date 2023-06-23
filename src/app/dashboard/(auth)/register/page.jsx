@@ -14,7 +14,6 @@ const Register = () => {
         const name = e.target[0].value;
         const email = e.target[1].value;
         const password = e.target[2].value;
-        const image = e.target[3].value;
 
         try {
             const res = await fetch("/api/auth/register", {
@@ -26,7 +25,6 @@ const Register = () => {
                     name,
                     email,
                     password,
-                    image,
                 }),
             });
             res.status === 201 && router.push("/dashboard/login?success=Account has been created");
@@ -44,7 +42,6 @@ const Register = () => {
                 <input type="text" placeholder="Nom" required className="input bg-contrast w-72" />
                 <input type="text" placeholder="Email" required className="input bg-contrast w-72" />
                 <input type="password" placeholder="Mot de passe" required className="input bg-contrast w-72" />
-                <input type="text" placeholder="Image" required className="input bg-contrast w-72" />
                 <button className="btn btn-primary w-72">Créer un compte</button>
                 {error && "Something went wrong!"}
             </form>

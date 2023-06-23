@@ -10,8 +10,8 @@ import { SearchTextProvider } from "@/context/SearchText";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-    title: "Lama Dev",
-    description: "This is the description",
+    title: "Cheat Sheets",
+    description: "Extraits de code pour les développeurs",
 };
 
 export default function RootLayout({ children }) {

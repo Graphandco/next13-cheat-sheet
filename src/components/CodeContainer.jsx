@@ -31,7 +31,7 @@ const CodeContainer = ({ tip }) => {
             language = "css";
             break;
         case "php":
-            language = "php";
+            language = "javascript";
             break;
         case "javascript":
             language = "javascript";
@@ -87,10 +87,14 @@ const CodeContainer = ({ tip }) => {
                     {/* {session.status === "loading" && <span className="loading loading-dots loading-lg"></span>} */}
 
                     <div className="bg-contrast5 rounded-t-2xl flex items-center justify-between py-3 px-5">
-                        <div className="text-lg text-primary font-semibold tracking-wide">{name}</div>
+                        <div className="text-lg text-contrast font-title">{name}</div>
                         <div className="flex align-center gap-3 text-contrast text-lg ">
-                            <FaRegCopy className="hover:text-primary cursor-pointer transition-all" onClick={copyCode} />
-                            <BsShare className="hover:text-primary cursor-pointer transition-all" onClick={shareCode} />
+                            <div className="tooltip tooltip-primary after:hidden" data-tip="Partager le lien">
+                                <BsShare className="hover:text-primary scale-100 hover:scale-125 cursor-pointer transition-all" onClick={shareCode} />
+                            </div>
+                            <div className="tooltip tooltip-primary after:hidden" data-tip="Copier le code">
+                                <FaRegCopy className="hover:text-primary scale-100 hover:scale-125 cursor-pointer transition-all" onClick={copyCode} />
+                            </div>
                         </div>
                     </div>
                     <div className="p-3 opacity-70">
