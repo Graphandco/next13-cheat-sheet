@@ -10,7 +10,7 @@ module.exports = {
     ],
     theme: {
         fontFamily: {
-            title: ['"Candal"', "sans-serif"],
+            title: ['"Belanosima"', "sans-serif"],
         },
         container: {
             padding: {

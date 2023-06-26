@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Anton&family=Candal&family=Open+Sans:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,6 +13,7 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     min-height: 100vh;
+    font-family: "Open Sans", sans-serif;
 }
 
 a {
@@ -54,7 +55,7 @@ a {
 }
 
 .title-xl {
-    font-family: "Candal", sans-serif;
+    font-family: "Belanosima", sans-serif;
     font-size: clamp(22px, 10px + 2vw, 28px);
     color: var(--contrast);
 }
