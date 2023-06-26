@@ -1,4 +1,3 @@
-import CodeContainer from "@/components/CodeContainer";
 import HomeTips from "@/components/homepage/HomeTips";
 
 async function getData() {

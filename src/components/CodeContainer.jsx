@@ -1,5 +1,6 @@
 "use client";
 import React, { useContext } from "react";
+import Image from "next/image";
 import { useSession } from "next-auth/react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { far } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -87,7 +88,10 @@ const CodeContainer = ({ tip }) => {
                     {/* {session.status === "loading" && <span className="loading loading-dots loading-lg"></span>} */}
 
                     <div className="bg-contrast5 rounded-t-2xl flex items-center justify-between py-3 px-5">
-                        <div className="text-xl text-contrast font-title">{name}</div>
+                        <div className="flex gap-2 items-center">
+                            <Image src={`../svg/${category}.svg`} width={25} height={25} alt={category} />
+                            <div className="text-xl text-contrast font-title">{name}</div>
+                        </div>
                         <div className="flex align-center gap-3 text-contrast text-lg ">
                             <div className="tooltip tooltip-primary after:hidden" data-tip="Partager le lien">
                                 <BsShare className="hover:text-primary scale-100 hover:scale-125 cursor-pointer transition-all" onClick={shareCode} />
