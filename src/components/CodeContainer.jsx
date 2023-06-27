@@ -89,7 +89,7 @@ const CodeContainer = ({ tip }) => {
 
                     <div className="bg-contrast5 rounded-t-2xl flex items-center justify-between py-3 px-5">
                         <div className="flex gap-2 items-center">
-                            <Image src={`../svg/${category}.svg`} width={25} height={25} alt={category} />
+                            <Image src={`/${category.toLowerCase()}.png`} width={25} height={25} alt={category} />
                             <div className="text-xl text-contrast font-title">{name}</div>
                         </div>
                         <div className="flex align-center gap-3 text-contrast text-lg ">
